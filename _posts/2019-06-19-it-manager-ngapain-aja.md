@@ -11,3 +11,14 @@ Adapun job description IT Manager yang didapat dari situs yang sama, antara lain
 - Memastikan semua sistem IT dapat berjalan dengan lancar
 - Memonitor pelaksanaan strategi dan kebijakan agar sesuai dengan kebijakan perusahaan
 - Menyediakan layanan dan pengembangan dalam lingkup IT dan komunikasi
+- Melakukan fungsi manajerial dan pengawasan serta controlling dalam pembangunan sistem dan aplikasi
+- Melakukan analisa, planning dan desain terhadap aplikasi dan sistem IT
+- Bertanggungjawab atas pengembangan dan peningkatan sistem IT
+- Melaksanakan strategi dan kebijakan perusahaan
+- Melakukan analisis terhadap spesifikasi dan efektefitas aplikasi baru
+
+Adapun requirementnya adalah :
+- Memahami basic IT Infrastruktur, Sistem SAP, Konfigurasi Mikrotik dan yang lainnya
+- Memahami programming language
+- Memiliki daya logika dan analisa yang baik
+- Menguasai Project Management
