@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 var dummySantri = [
     {
         "nik": "3214016912080003",
@@ -139,7 +137,7 @@ var dummySantri = [
         "pekejaan_ibu": "Guru/Dosen",
         "no_telp": "081387864616\n"
     }
-]
+];
 
 $(function(){
     $("[data-toggle='sidebar']").trigger('click');
@@ -159,15 +157,42 @@ dummySantri.forEach(function(e,i) {
         <td>${e.jk}</td>
         <td>${e.ttl}</td>
         <td>${e.sekolah_asal}</td>
-        <td><a href="#" class="btn btn-secondary">Detail</a></td>
+        <td class="d-flex">
+            <a href="#" class="btn btn-info mx-1"><i class="fas fa-eye"></i></a>
+            <a href="#" class="btn btn-warning mx-1"><i class="fas fa-edit"></i></a>
+            <a href="" class="btn btn-danger mx-1" onclick="deleteRow(event);"><i class="fas fa-trash"></i></a>
+        </td>
     </tr>
     `);
 });
 
 $("#table-1").dataTable({
     pageLength: 5,
-    lengthMenu: [[5, 10, 20, 50], [5, 10, 20, 50]]
-//   "columnDefs": [
-//     { "sortable": false, "targets": [2,3] }
-//   ]
+    lengthMenu: [[5, 10, 20, 50], [5, 10, 20, 50]],
+    columnDefs: [
+        { "sortable": false, "targets": [9] }
+    ]
 });
+
+/* Delete Row */
+function deleteRow(e) {
+    e.preventDefault();
+    Swal.fire({
+        title: 'Apakah Anda Yakin?',
+        text: "Anda tidak akan bisa mengembalikan data yang telah dihapus!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#fb160a',
+        cancelButtonColor: '#009900',
+        cancelButtonText:'Maaf, tidak jadi!',
+        confirmButtonText: 'Ya, tolong hapus!'
+      }).then((result) => {
+          if(result.isConfirmed) {
+              Swal.fire(
+                'Terhapus!',
+                'Data telah berhasil dihapus.',
+                'success'
+              )
+          }
+      });
+}

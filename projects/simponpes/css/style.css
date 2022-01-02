@@ -10,5 +10,8 @@
     }
   }
   
+  .rounded-1 {
+    border-radius: .25rem !important;
+  }
   /*# sourceMappingURL=custom.css.map */
   
