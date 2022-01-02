@@ -140,7 +140,9 @@ var dummySantri = [
 ];
 
 $(function(){
-    $("[data-toggle='sidebar']").trigger('click');
+    if(window.matchMedia('(min-width: 1025px)').matches) {
+        $("[data-toggle='sidebar']").trigger('click');
+    }
 });
 
 dummySantri.forEach(function(e,i) {
@@ -158,7 +160,7 @@ dummySantri.forEach(function(e,i) {
         <td>${e.ttl}</td>
         <td>${e.sekolah_asal}</td>
         <td class="d-flex">
-            <a href="#" class="btn btn-info mx-1"><i class="fas fa-eye"></i></a>
+            <a href="#" class="btn btn-info mx-1" data-toggle="modal" data-target="#viewModal"><i class="fas fa-eye"></i></a>
             <a href="#" class="btn btn-warning mx-1"><i class="fas fa-edit"></i></a>
             <a href="" class="btn btn-danger mx-1" onclick="deleteRow(event);"><i class="fas fa-trash"></i></a>
         </td>
