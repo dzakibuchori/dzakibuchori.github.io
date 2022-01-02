@@ -135,7 +135,7 @@ var dummySantri = [
         "pekerjaan_ayah": "Guru/Dosen",
         "nama_ibu": "Euis Maryam Maryani",
         "pekejaan_ibu": "Guru/Dosen",
-        "no_telp": "081387864616\n"
+        "no_telp": "081387864616"
     }
 ];
 
