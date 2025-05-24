@@ -2,45 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --color-primary: 139, 92, 246;
-    --color-primary-light: 167, 139, 250;
-    --color-primary-dark: 124, 58, 237;
-  }
-
-  body {
-    @apply antialiased;
-  }
+:root {
+  --primary-blue: #1a365d;
+  --secondary-blue: #2c5282;
+  --accent-blue: #4299e1;
+  --deep-purple: #2d004d;
 }
 
-@layer components {
-  .btn {
-    @apply px-4 py-2 rounded-lg font-medium transition-colors;
-  }
+body {
+  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue) 50%, var(--deep-purple) 100%);
+  min-height: 100vh;
+  color: #fff;
+}
 
-  .btn-primary {
-    @apply bg-purple-600 text-white hover:bg-purple-700;
-  }
+.glass {
+  background: rgba(255, 255, 255, 0.15); /* more transparent */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+}
 
-  .btn-secondary {
-    @apply border border-purple-600 text-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20;
-  }
+.glass-card {
+  @apply glass rounded-xl p-6 transition-all duration-300 hover:shadow-lg;
+  color: #d0f1ff;
+  text-shadow: 0 1px 8px rgba(255,255,255,0.15);
+}
+
+.glass-button {
+  @apply glass px-6 py-2 rounded-lg text-blue-100 hover:text-white transition-all duration-300 hover:shadow-lg;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-800;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400 dark:bg-gray-500;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.glass-tag {
+  background: rgba(20, 30, 48, 0.6); /* dark glass */
+  color: #fff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 9999px; /* full */
+  padding: 0.25rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: inline-block;
+  box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.10);
 } 
