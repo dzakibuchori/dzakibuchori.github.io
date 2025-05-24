@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About Me">
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">About Me</h1>
+      
+      <div class="prose dark:prose-invert max-w-none">
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+          I'm a passionate Software Engineer with X years of experience in building web applications
+          and digital solutions. My journey in technology began [Your Story Here], and I've been
+          dedicated to creating impactful software ever since.
+        </p>
+
+        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-12 mb-6">Skills & Expertise</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Frontend Development</h3>
+            <ul class="space-y-2">
+              <li class="flex items-center text-gray-600 dark:text-gray-300">
+                <span class="w-2 h-2 bg-purple-600 rounded-full mr-2"></span>
+                React.js / Next.js
+              </li>
+              <li class="flex items-center text-gray-600 dark:text-gray-300">
+                <span class="w-2 h-2 bg-purple-600 rounded-full mr-2"></span>
+                TypeScript
+              </li>
+              <li class="flex items-center text-gray-600 dark:text-gray-300">
+                <span class="w-2 h-2 bg-purple-600 rounded-full mr-2"></span>
+                Tailwind CSS
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Backend Development</h3>
+            <ul class="space-y-2">
+              <li class="flex items-center text-gray-600 dark:text-gray-300">
+                <span class="w-2 h-2 bg-purple-600 rounded-full mr-2"></span>
+                Node.js
+              </li>
+              <li class="flex items-center text-gray-600 dark:text-gray-300">
+                <span class="w-2 h-2 bg-purple-600 rounded-full mr-2"></span>
+                Python
+              </li>
+              <li class="flex items-center text-gray-600 dark:text-gray-300">
+                <span class="w-2 h-2 bg-purple-600 rounded-full mr-2"></span>
+                SQL / NoSQL Databases
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-12 mb-6">Education</h2>
+        <div class="space-y-6">
+          <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-sm">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">University Name</h3>
+            <p class="text-gray-600 dark:text-gray-300">Bachelor of Science in Computer Science</p>
+            <p class="text-gray-500 dark:text-gray-400">2018 - 2022</p>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-12 mb-6">Interests</h2>
+        <div class="flex flex-wrap gap-4">
+          <span class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full">
+            Open Source
+          </span>
+          <span class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full">
+            AI/ML
+          </span>
+          <span class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full">
+            Web Development
+          </span>
+          <span class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full">
+            Cloud Computing
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout> 

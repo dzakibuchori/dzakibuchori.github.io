@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const posts = [
+  {
+    title: "Getting Started with Next.js 13",
+    excerpt: "Learn about the new features and improvements in Next.js 13, including the App Router, Server Components, and more.",
+    date: "2024-01-15",
+    readTime: "5 min read",
+    category: "Web Development",
+    slug: "getting-started-with-nextjs-13"
+  },
+  {
+    title: "Building Scalable APIs with Node.js",
+    excerpt: "Best practices for designing and implementing scalable REST APIs using Node.js and Express.",
+    date: "2024-01-10",
+    readTime: "8 min read",
+    category: "Backend Development",
+    slug: "building-scalable-apis-with-nodejs"
+  },
+  {
+    title: "Introduction to TypeScript",
+    excerpt: "A comprehensive guide to TypeScript, its features, and how to use it effectively in your projects.",
+    date: "2024-01-05",
+    readTime: "6 min read",
+    category: "Programming",
+    slug: "introduction-to-typescript"
+  }
+];
+
+const categories = [
+  "Web Development",
+  "Backend Development",
+  "Programming",
+  "DevOps",
+  "Cloud Computing",
+  "AI/ML"
+];
+---
+
+<Layout title="Blog">
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">Blog</h1>
+
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Main Content -->
+        <div class="md:w-2/3">
+          <div class="space-y-8">
+            {posts.map((post) => (
+              <article class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6">
+                <div class="flex items-center gap-2 mb-4">
+                  <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full text-sm">
+                    {post.category}
+                  </span>
+                  <span class="text-gray-500 dark:text-gray-400">•</span>
+                  <time datetime={post.date} class="text-gray-500 dark:text-gray-400">
+                    {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                </div>
+                <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
+                  <a href={`/blog/${post.slug}`} class="hover:text-purple-600 dark:hover:text-purple-400">
+                    {post.title}
+                  </a>
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  {post.excerpt}
+                </p>
+                <div class="flex items-center justify-between">
+                  <a href={`/blog/${post.slug}`} class="text-purple-600 dark:text-purple-400 hover:underline">
+                    Read More →
+                  </a>
+                  <span class="text-gray-500 dark:text-gray-400 text-sm">
+                    {post.readTime}
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="md:w-1/3">
+          <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Categories</h2>
+            <div class="space-y-2">
+              {categories.map((category) => (
+                <a href={`/blog/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
+                   class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-colors">
+                  {category}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 mt-6">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Subscribe</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Get notified when I publish new articles.
+            </p>
+            <form class="space-y-4">
+              <input type="email" placeholder="Enter your email" 
+                     class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-600" />
+              <button type="submit" 
+                      class="w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout> 
