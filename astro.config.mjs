@@ -6,8 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://yourusername.github.io',
-  base: '/dzakibuchori.github.io',
+  site: 'https://dzakibuchori.github.io',
   integrations: [
     tailwind(),
     mdx(),
