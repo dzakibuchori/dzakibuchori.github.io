@@ -1,38 +1,74 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+const years = new Date().getFullYear() - 2018;
 ---
 
 <Layout title="Welcome to Dzaki's Personal Website">
   <div class="animate-fade-in">
-    <section id="say-hi" class="glass-card mb-8">
-      <h1 class="text-4xl font-bold mb-4 text-blue-100">Hi, I'm Dzaki Buchori 👋</h1>
-      <p class="text-lg text-blue-50">
-        I'm a Highly motivated full-stack engineer. 
-        7+ years of experience in many different stack and frameworks (Angular, Springboot, Laravel). 
-        Full-stack capabilities with PHP, Java, JavaScript/TypeScript!
-      </p>
+    <section id="say-hi" class="my-14 mx-8">
+      <h1 class="text-4xl font-bold mb-4 text-blue-100">
+        👋 Hi, <br class="block sm:hidden" />
+        I'm Dzaki Buchori
+      </h1>
+      <div class="text-lg text-blue-200">
+        <p class="mb-1">
+          Over the past <strong>{years} years</strong>, I've grown my career as
+          a <strong>Full Stack Software Developer</strong>, working on complex,
+          enterprise-scale web applications and leading technical teams along
+          the way. I mainly worked with <strong
+            >Java, Typescript, and PHP</strong
+          >, building products across industries such as finance,
+          telecommunications, government, education and e-commerce. My focus is
+          on creating reliable, scalable solutions with AI as a natural part of
+          my day-to-day work.
+        </p>
+      </div>
     </section>
+  </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <a href="/about" class="glass-card group">
-        <h2 class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors">About Me</h2>
-        <p class="text-blue-50">Learn more about my journey, skills, and what drives me.</p>
-      </a>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <a href="/about" class="glass-card group">
+      <h2
+        class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors"
+      >
+        About Me
+      </h2>
+      <p class="text-blue-200">
+        Learn more about my activities, skills, and what drives me.
+      </p>
+    </a>
 
-      <a href="/resume" class="glass-card group">
-        <h2 class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors">Resume</h2>
-        <p class="text-blue-50">View my professional experience and qualifications.</p>
-      </a>
+    <a href="/resume" class="glass-card group">
+      <h2
+        class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors"
+      >
+        Resume
+      </h2>
+      <p class="text-blue-200">
+        View my professional experience and qualifications.
+      </p>
+    </a>
 
-      <a href="/projects" class="glass-card group">
-        <h2 class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors">Projects</h2>
-        <p class="text-blue-50">Explore my portfolio of work and personal projects.</p>
-      </a>
+    <a href="/projects" class="glass-card group">
+      <h2
+        class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors"
+      >
+        Projects
+      </h2>
+      <p class="text-blue-200">
+        Explore my portfolio of work and personal projects.
+      </p>
+    </a>
 
-      <a href="/blog" class="glass-card group">
-        <h2 class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors">Blog</h2>
-        <p class="text-blue-50">Read my thoughts on technology, development, and more.</p>
-      </a>
-    </div>
+    <a href="/blog" class="glass-card group">
+      <h2
+        class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors"
+      >
+        Blog
+      </h2>
+      <p class="text-blue-200">
+        Read my thoughts on technology, development, and more.
+      </p>
+    </a>
   </div>
 </Layout>
