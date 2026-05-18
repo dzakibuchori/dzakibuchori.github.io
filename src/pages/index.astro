@@ -5,23 +5,38 @@ const years = new Date().getFullYear() - 2018;
 
 <Layout title="Welcome to Dzaki's Personal Website">
   <div class="animate-fade-in">
-    <section id="say-hi" class="my-14 mx-8">
-      <h1 class="text-4xl font-bold mb-4 text-blue-100">
-        👋 Hi, <br class="block sm:hidden" />
-        I'm Dzaki Buchori
-      </h1>
-      <div class="text-lg text-blue-200">
-        <p class="mb-1">
-          Over the past <strong>{years} years</strong>, I've grown my career as
-          a <strong>Full Stack Software Developer</strong>, working on complex,
-          enterprise-scale web applications and leading technical teams along
-          the way. I mainly worked with <strong
-            >Java, Typescript, and PHP</strong
-          >, building products across industries such as finance,
-          telecommunications, government, education and e-commerce. My focus is
-          on creating reliable, scalable solutions with AI as a natural part of
-          my day-to-day work.
-        </p>
+    <section
+      id="say-hi"
+      class="flex flex-col sm:flex-row items-center gap-8 my-14 mx-8"
+    >
+      <!-- Profile Picture -->
+      <div class="shrink-0">
+        <img
+          src="/profile.jpg"
+          alt="Dzaki Buchori"
+          class="w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 rounded-full ring-2 ring-white/30 shadow-[0_0_32px_rgba(66,153,225,0.35)] object-cover object-top hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+
+      <!-- Text Content -->
+      <div class="flex-1 text-center sm:text-left">
+        <h1 class="text-4xl font-bold mb-4 text-blue-100">
+          👋 Hi, <br class="block md:hidden" />
+          I'm Dzaki Buchori
+        </h1>
+        <div class="text-lg text-blue-200">
+          <p class="mb-1">
+            Over the past <strong>{years} years</strong>, I've grown my career
+            as a <strong>Full Stack Software Developer</strong>, working on
+            complex, enterprise-scale web applications and leading technical
+            teams along the way. I mainly worked with <strong
+              >Java, Typescript, and PHP</strong
+            >, building products across industries such as finance,
+            telecommunications, government, education and e-commerce. My focus
+            is on creating reliable, scalable solutions with AI as a natural
+            part of my day-to-day work.
+          </p>
+        </div>
       </div>
     </section>
   </div>
