@@ -29,8 +29,12 @@ body {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
 }
 
+@utility w-fit-content {
+  width: fit-content;
+}
+
 header::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
@@ -43,6 +47,10 @@ header::before {
 
 header.glass-header::before {
   opacity: 1;
+}
+
+.glass-tab {
+  @apply glass rounded-t-xl px-5 pb-1 pt-3 transition-all w-fit-content duration-300 hover:shadow-lg;
 }
 
 .glass-card {

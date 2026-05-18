@@ -16,7 +16,6 @@ const years = new Date().getFullYear() - 2018;
         class="w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 rounded-full ring-2 ring-white/30 shadow-[0_0_32px_rgba(66,153,225,0.35)] object-cover object-top hover:scale-105 transition-transform duration-300"
       />
     </div>
-
     <!-- Text Content -->
     <div class="flex-1 text-center sm:text-left">
       <h1 class="text-4xl font-bold mb-4 text-blue-100">
@@ -25,65 +24,46 @@ const years = new Date().getFullYear() - 2018;
       </h1>
       <div class="text-lg text-blue-200">
         <p class="mb-1">
+          Currently working at <strong>Unit4</strong> as a <strong
+            >Full Stack Developer</strong
+          >, contributing to the web modernization of <strong
+            >Unit4 Financial Planning & Analysis</strong
+          >, an enterprise‑grade application used by <strong
+            >400+ clients worldwide</strong
+          >.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about-me" class="container mb-8">
+    <div class="glass-tab">
+      <h2
+        class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors"
+      >
+        About Me
+      </h2>
+    </div>
+    <hr />
+    <!-- Text Content -->
+    <div class="flex-1 mt-4">
+      <div class="text-lg text-blue-200">
+        <p class="mb-2">
           Over the past <strong>{years} years</strong>, I've grown my career as
           a <strong>Full Stack Software Developer</strong>, working on complex,
           enterprise-scale web applications and leading technical teams along
           the way.
         </p>
-        <p class="mb-1">
+        <p class="mb-2">
           I mainly worked with <strong>Java, Typescript, and PHP</strong>,
           building products across industries such as finance,
           telecommunications, government, education and e-commerce. My focus is
           on creating reliable, scalable solutions with AI as a natural part of
           my day-to-day work.
         </p>
+        <!-- TODO: will reveal once about me content is ready 
+        <a href="/about" class="underline">More about me...</a> -->
       </div>
     </div>
   </section>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <a href="/about" class="glass-card group">
-      <h2
-        class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors"
-      >
-        About Me
-      </h2>
-      <p class="text-blue-200">
-        Learn more about my activities, skills, and what drives me.
-      </p>
-    </a>
-
-    <a href="/resume" class="glass-card group">
-      <h2
-        class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors"
-      >
-        Resume
-      </h2>
-      <p class="text-blue-200">
-        View my professional experience and qualifications.
-      </p>
-    </a>
-
-    <a href="/projects" class="glass-card group">
-      <h2
-        class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors"
-      >
-        Projects
-      </h2>
-      <p class="text-blue-200">
-        Explore my portfolio of work and personal projects.
-      </p>
-    </a>
-
-    <a href="/blog" class="glass-card group">
-      <h2
-        class="text-2xl font-semibold mb-2 text-blue-100 group-hover:text-white transition-colors"
-      >
-        Blog
-      </h2>
-      <p class="text-blue-200">
-        Read my thoughts on technology, development, and more.
-      </p>
-    </a>
-  </div>
 </Layout>
