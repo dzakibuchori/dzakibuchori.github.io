@@ -1,9 +1,10 @@
 # AGENTS.md
 
 ## Stack
-- Astro 4.16.18, Tailwind CSS 3.4 (v3), TypeScript strict mode
+- Astro 6.3.3, Tailwind CSS 4.3 (v4), TypeScript strict mode
 - Static output → GitHub Pages at https://dzakibuchori.github.io
 - Deployment branch: `master` (not `main`)
+- Requires Node 22.12.0+ (CI updated to Node 22, local should be v22+)
 
 ## Commands
 
@@ -13,7 +14,7 @@
 | Build | `npm run build` |
 | Preview production build | `npm run preview` |
 | Deploy to GitHub Pages | `npm run build && npm run deploy` |
-| Type-check | `npm install @astrojs/check typescript` (first time only), then `npm run astro check` |
+| Type-check | `npm run astro check` |
 
 **`npm run deploy` only pushes `./dist/` via gh-pages — always build first or you'll deploy stale/missing output.**
 
@@ -25,7 +26,7 @@ Custom classes live in `src/styles/global.css`. Use these for all UI work:
 - `.glass-header` — header glass effect
 - `.animate-fade-in` — page entry animation
 - CSS vars: `--primary-blue`, `--secondary-blue`, `--accent-blue`, `--deep-purple`
-- Tailwind `darkMode: 'class'` — configured but no toggle implemented yet
+- Tailwind `darkMode: 'class'` — configured via `@custom-variant dark` in global.css (no toggle implemented yet)
 
 ## Page structure convention
 Every page follows this pattern:
@@ -48,7 +49,15 @@ import Layout from '../layouts/Layout.astro';
 - **Blog is hardcoded**: `src/pages/blog.astro` uses a static array; `@astrojs/mdx` is installed but no `src/content/` directory or content collection is set up
 - **Placeholder content**: `about.astro` and `resume.astro` still contain "University Name", "Company Name", "[Your Story Here]"
 
+## Tailwind CSS v4 specifics
+- Global CSS uses `@import "tailwindcss"` instead of `@tailwind` directives
+- Custom utilities defined with `@utility` (e.g., `.glass` is a utility)
+- Typography plugin included via `@plugin "@tailwindcss/typography"`
+- Dark mode variant defined as `@custom-variant dark (&:where(.dark, .dark *))`
+- `tailwind.config.mjs` is no longer used (kept as documentation placeholder)
+- All theme customization lives in `src/styles/global.css`
+
 ## Deployment quirks
-- GitHub Actions (`.github/workflows/astro.yml`) overrides `--site` and `--base` at build time using GitHub Pages API output; local builds use the values in `astro.config.mjs`
-- `.astro/data-store.json` may show a stale `"astro-version": "5.8.0"` — actual installed version is 4.16.18; ignore this cache file
-- `@astrojs/tailwind` v5 is the Astro 4 integration — incompatible with Astro 5 if you ever upgrade
+- GitHub Actions (`.github/workflows/astro.yml`) uses Node 22 — compatible with Astro 6
+- `.astro/data-store.json` may show stale cache info — ignore it
+- Local builds use `https://dzakibuchori.github.io` (no base path per astro.config.mjs); CI may override this via GitHub Pages output

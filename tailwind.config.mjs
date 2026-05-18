@@ -1,31 +1,3 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  theme: {
-    extend: {
-      typography: {
-        DEFAULT: {
-          css: {
-            maxWidth: '65ch',
-            color: 'inherit',
-            a: {
-              color: 'inherit',
-              textDecoration: 'none',
-              fontWeight: '500',
-            },
-            strong: {
-              color: 'inherit',
-            },
-            code: {
-              color: 'inherit',
-            },
-          },
-        },
-      },
-    },
-  },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-  darkMode: 'class',
-} 
+// Tailwind CSS v4 uses CSS-based configuration.
+// All theme configuration is now in src/styles/global.css using @theme blocks.
+// This file is kept for reference only and is not used by the build.
