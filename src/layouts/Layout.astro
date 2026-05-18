@@ -48,8 +48,15 @@ const {
               class="text-blue-100 hover:text-white transition-colors">Blog</a
             >
           </div>
-          <button class="md:hidden text-blue-100" id="mobile-menu-button">
+          <button
+            class="md:hidden text-blue-100"
+            id="mobile-menu-button"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <!-- Hamburger icon -->
             <svg
+              id="icon-hamburger"
               class="w-6 h-6"
               fill="none"
               stroke="currentColor"
@@ -61,9 +68,54 @@ const {
                 stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
+            <!-- Close (X) icon -->
+            <svg
+              id="icon-close"
+              class="hidden w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
           </button>
         </div>
       </nav>
+
+      <!-- Mobile menu panel -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-white/10">
+        <div class="container mx-auto px-4 py-2 flex flex-col">
+          <a
+            href="/"
+            class="text-blue-100 hover:text-white transition-colors py-3 border-b border-white/10"
+            >Home</a
+          >
+          <a
+            href="/about"
+            class="text-blue-100 hover:text-white transition-colors py-3 border-b border-white/10"
+            >About</a
+          >
+          <a
+            href="/resume"
+            class="text-blue-100 hover:text-white transition-colors py-3 border-b border-white/10"
+            >Resume</a
+          >
+          <a
+            href="/projects"
+            class="text-blue-100 hover:text-white transition-colors py-3 border-b border-white/10"
+            >Projects</a
+          >
+          <a
+            href="/blog"
+            class="text-blue-100 hover:text-white transition-colors py-3"
+            >Blog</a
+          >
+        </div>
+      </div>
     </header>
 
     <main class="container mx-auto px-4 pt-24 pb-12">
@@ -154,6 +206,11 @@ const {
 
     <script>
       const header = document.getElementById("site-header");
+      const menuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const iconHamburger = document.getElementById("icon-hamburger");
+      const iconClose = document.getElementById("icon-close");
+
       window.addEventListener(
         "scroll",
         () => {
@@ -163,6 +220,33 @@ const {
         },
         { passive: true },
       );
+
+      function openMenu() {
+        mobileMenu?.classList.remove("hidden");
+        iconHamburger?.classList.add("hidden");
+        iconClose?.classList.remove("hidden");
+        menuButton?.setAttribute("aria-expanded", "true");
+        header?.classList.add("glass-header");
+      }
+
+      function closeMenu() {
+        mobileMenu?.classList.add("hidden");
+        iconHamburger?.classList.remove("hidden");
+        iconClose?.classList.add("hidden");
+        menuButton?.setAttribute("aria-expanded", "false");
+        if (window.scrollY <= 10) {
+          header?.classList.remove("glass-header");
+        }
+      }
+
+      menuButton?.addEventListener("click", () => {
+        const isOpen = !mobileMenu?.classList.contains("hidden");
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      mobileMenu?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
     </script>
   </body>
 </html>
