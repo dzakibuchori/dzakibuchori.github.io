@@ -22,7 +22,7 @@ const {
     <title>{title}</title>
   </head>
   <body>
-    <header class="fixed w-full z-50">
+    <header id="site-header" class="fixed w-full z-50">
       <nav class="container mx-auto px-4 py-4 m-4">
         <div class="flex justify-between items-center">
           <a href="/" class="text-xl font-bold text-blue-100">Dzaki Buchori</a>
@@ -151,6 +151,19 @@ const {
         </div>
       </div>
     </footer>
+
+    <script>
+      const header = document.getElementById("site-header");
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (header) {
+            header.classList.toggle("glass-header", window.scrollY > 10);
+          }
+        },
+        { passive: true },
+      );
+    </script>
   </body>
 </html>
 
