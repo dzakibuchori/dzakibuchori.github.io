@@ -1,3 +1,5 @@
+![Dzaki Buchori's Logo](public/logo.png)
+
 # Dzaki's Personal Portfolio Website
 
 A modern, responsive personal portfolio website built with Astro and Tailwind CSS.
@@ -7,17 +9,18 @@ A modern, responsive personal portfolio website built with Astro and Tailwind CS
 - 🚀 Built with Astro for optimal performance
 - 💅 Styled with Tailwind CSS
 - 📱 Fully responsive design
+- 🌙 Dark/Light mode enabled
 - 📝 Blog functionality with MDX (TODO: to write at least 5 articles)
 - 🔍 SEO optimized (TODO: to integrate astro-seo)
 - 📊 Sitemap generation
 
 ## Pages
 
-- Home: Landing page with featured projects and latest blog posts (blog posts is WIP)
+- Home: Landing page showing about me section, featured projects and latest blog posts (blog posts is WIP)
 - About: Personal information and skills (WIP)
 - Projects: Portfolio of projects with detailed descriptions
-- Resume: Professional experience and education (WIP)
-- Blog: Articles and tutorials (WIP)
+- Resume: Page to preview my resume and to download it (WIP)
+- Blog: Articles, tutorials and insights (WIP)
 
 ## Getting Started
 
@@ -35,7 +38,7 @@ git clone https://github.com/dzakibuchori/dzakibuchori.github.io.git
 cd dzakibuchori.github.io
 ```
 
-or using `degit` by Rich Harris for project scaffolding, the guide is [here](https://github.com/Rich-Harris/degit)
+or use `degit` by Rich Harris for project scaffolding, the guide is [here](https://github.com/Rich-Harris/degit)
 
 2. Install dependencies:
 
