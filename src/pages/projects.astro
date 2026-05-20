@@ -6,7 +6,7 @@ const projects = [
     title: "XDesa",
     description: "AI-powered smart village and management system",
     image: "/projects/xdesa.webp",
-    tags: ["NextJs", "Go", "LiveKit"],
+    tags: ["Next.js", "Go", "LiveKit"],
     link: "/projects/xdesa",
     category: "Personal",
   },
@@ -45,12 +45,13 @@ const projects = [
         <p class="text-lg text-blue-900 dark:text-blue-200 mb-6">
           From government platforms to enterprise finance, these projects
           reflect the range of work I've built across my career as a Full Stack
-          Developer — writing production code in <strong>Java, TypeScript,
-          and PHP</strong>, and shipping across industries from
-          telecommunications and education to e-commerce and financial
-          services. Some are personal experiments where I reached for newer
-          tools like <strong>Next.js, Go, and LiveKit</strong>; others are
-          professional builds that demanded the reliability of <strong
+          Developer — writing production code in <strong
+            >Java, TypeScript, and PHP</strong
+          >, and shipping across industries from telecommunications and
+          education to e-commerce and financial services. Some are personal
+          experiments where I reached for newer tools like <strong
+            >Next.js, Go, and LiveKit</strong
+          >; others are professional builds that demanded the reliability of <strong
             >Angular, Java EE, and Spring Boot</strong
           >.
         </p>
@@ -65,7 +66,7 @@ const projects = [
                   class="w-full h-48 object-cover rounded-t-xl"
                 />
                 <div class="p-6 flex flex-col flex-1">
-                  <h2 class="text-xl font-semibold text-white mb-1">
+                  <h2 class="text-xl font-semibold text-blue-950 dark:text-blue-100 mb-1">
                     {project.title}
                   </h2>
                   <span
@@ -83,11 +84,8 @@ const projects = [
                       <span class="glass-tag">{tag}</span>
                     ))}
                   </div>
-                  <a
-                    href={project.link}
-                    class="text-purple-600 hover:underline text-sm"
-                  >
-                    View Project →
+                  <a href={project.link} class="underline text-sm">
+                    View details...
                   </a>
                 </div>
               </article>
