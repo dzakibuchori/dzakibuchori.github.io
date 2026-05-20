@@ -89,14 +89,14 @@
   --color-text: #dbeafe;
   --color-text-muted: #bfdbfe;
 
-  --color-glass-bg: rgba(255, 255, 255, 0.15);
-  --color-glass-border: rgba(255, 255, 255, 0.25);
+  --color-glass-bg: rgba(177, 180, 254, 0.15);
+  --color-glass-border: rgba(177, 180, 254, 0.25);
   --color-glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
 
   --color-card-text: #d0f1ff;
   --color-card-tshadow: 0 1px 8px rgba(255, 255, 255, 0.15);
 
-  --color-header-bg: rgba(255, 255, 255, 0.15);
+  --color-header-bg: rgba(45, 0, 77, 0.15);
 
   --color-btn-text: #bfdbfe;
   --color-btn-hover: #ffffff;
