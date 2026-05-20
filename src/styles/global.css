@@ -137,7 +137,6 @@ hr {
 @utility glass {
   background: var(--color-glass-bg);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(20px);
   border: 1.5px solid var(--color-glass-border);
   box-shadow: var(--color-glass-shadow);
 }
@@ -153,7 +152,6 @@ header::before {
   inset: 0;
   z-index: -1;
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   background: var(--color-header-bg);
   opacity: 0;
   transition:
@@ -203,7 +201,6 @@ header.glass-header::before {
   background: var(--color-tag-bg);
   color: var(--color-tag-text);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--color-tag-border);
   border-radius: 9999px;
   padding: 0.25rem 1rem;
