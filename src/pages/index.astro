@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects";
 const years = new Date().getFullYear() - 2018;
 ---
 
@@ -84,96 +86,7 @@ const years = new Date().getFullYear() - 2018;
           snapshot of some of my most recent projects:
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-4">
-          <article class="glass-card overflow-hidden flex flex-col">
-            <img
-              src="/projects/xdesa.webp"
-              alt="XDesa"
-              class="w-full h-48 object-cover rounded-t-xl"
-            />
-            <div class="p-5 flex flex-col flex-1">
-              <h3
-                class="text-lg font-semibold text-blue-950 dark:text-blue-100 mb-2"
-              >
-                XDesa
-              </h3>
-              <span
-                class="text-xs font-medium px-2.5 py-0.5 rounded-full border w-fit mb-3 bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900/40 dark:text-blue-300 dark:border-blue-700/50"
-              >
-                Personal
-              </span>
-              <p class="text-sm mb-4 flex-1">
-                AI-powered smart village and management system
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="glass-tag">Next.js</span>
-                <span class="glass-tag">Go</span>
-                <span class="glass-tag">LiveKit</span>
-              </div>
-              <a href="/projects/xdesa" class="underline text-sm">
-                View details...
-              </a>
-            </div>
-          </article>
-
-          <article class="glass-card overflow-hidden flex flex-col">
-            <img
-              src="/projects/u4fpa.webp"
-              alt="Unit4 FP&A"
-              class="w-full h-48 object-cover rounded-t-xl"
-            />
-            <div class="p-5 flex flex-col flex-1">
-              <h3
-                class="text-lg font-semibold text-blue-950 dark:text-blue-100 mb-2"
-              >
-                Unit4 FP&A
-              </h3>
-              <span
-                class="text-xs font-medium px-2.5 py-0.5 rounded-full border w-fit mb-3 bg-purple-100 text-purple-700 border-purple-200 dark:bg-purple-900/40 dark:text-purple-300 dark:border-purple-700/50"
-              >
-                Professional
-              </span>
-              <p class="text-sm mb-4 flex-1">
-                Enterprise-grade financial planning application
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="glass-tag">Angular</span>
-                <span class="glass-tag">Java EE</span>
-              </div>
-              <a href="/projects/u4fpa" class="underline text-sm">
-                View details...
-              </a>
-            </div>
-          </article>
-
-          <article class="glass-card overflow-hidden flex flex-col">
-            <img
-              src="/projects/u4cp.webp"
-              alt="Unit4 CP"
-              class="w-full h-48 object-cover rounded-t-xl"
-            />
-            <div class="p-5 flex flex-col flex-1">
-              <h3
-                class="text-lg font-semibold text-blue-950 dark:text-blue-100 mb-2"
-              >
-                Unit4 CP
-              </h3>
-              <span
-                class="text-xs font-medium px-2.5 py-0.5 rounded-full border w-fit mb-3 bg-purple-100 text-purple-700 border-purple-200 dark:bg-purple-900/40 dark:text-purple-300 dark:border-purple-700/50"
-              >
-                Professional
-              </span>
-              <p class="text-sm mb-4 flex-1">
-                Enterprise-grade compensation planning application
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="glass-tag">Angular</span>
-                <span class="glass-tag">Spring Boot</span>
-              </div>
-              <a href="/projects/u4cp" class="underline text-sm">
-                View details...
-              </a>
-            </div>
-          </article>
+          {projects.map((project) => <ProjectCard {...project} />)}
         </div>
         <a href="/projects" class="underline">View all projects...</a>
       </div>
