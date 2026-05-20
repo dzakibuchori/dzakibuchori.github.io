@@ -2,48 +2,163 @@
 @plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* TODO: make it for customizeable with predefined themes or more general naming */
+/* =========================================
+   CSS Houdini typed properties
+   Enables smooth gradient transitions in Chrome / Edge / Safari.
+   Firefox gracefully snaps without animating.
+   ========================================= */
+@property --color-bg-from {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f0f7ff;
+}
+@property --color-bg-mid {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #dbeafe;
+}
+@property --color-bg-to {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ede9fe;
+}
+
+/* =========================================
+   Theme tokens — light mode (default)
+   ========================================= */
 :root {
+  /* Brand palette */
   --primary-blue: #1a365d;
   --secondary-blue: #2c5282;
   --accent-blue: #4299e1;
   --deep-purple: #2d004d;
+
+  /* Background gradient stops */
+  --color-bg-from: #f0f7ff;
+  --color-bg-mid: #dbeafe;
+  --color-bg-to: #ede9fe;
+
+  /* Text */
+  --color-text: #1a365d;
+  --color-text-muted: #2c5282;
+
+  /* Glass morphism */
+  --color-glass-bg: rgba(255, 255, 255, 0.3);
+  --color-glass-border: rgba(100, 149, 237, 0.22);
+  --color-glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+
+  /* Glass card text */
+  --color-card-text: #1a365d;
+  --color-card-tshadow: none;
+
+  /* Glass header */
+  --color-header-bg: rgba(255, 255, 255, 0.3);
+
+  /* Glass button */
+  --color-btn-text: #1e40af;
+  --color-btn-hover: #1a365d;
+
+  /* Glass tag / pill */
+  --color-tag-bg: rgba(219, 234, 254, 0.75);
+  --color-tag-text: #1e40af;
+  --color-tag-border: rgba(100, 149, 237, 0.3);
+
+  /* Subtle borders (hr, mobile menu, etc.) */
+  --color-border-subtle: rgba(30, 64, 175, 0.15);
+
+  /* Scrollbar */
+  --color-scrollbar-track: rgba(0, 0, 0, 0.05);
+  --color-scrollbar-thumb: rgba(100, 149, 237, 0.35);
+  --color-scrollbar-hover: rgba(100, 149, 237, 0.55);
+
+  /* Gradient transition (Houdini) */
+  transition:
+    --color-bg-from 0.5s ease,
+    --color-bg-mid 0.5s ease,
+    --color-bg-to 0.5s ease;
 }
 
+/* =========================================
+   Theme tokens — dark mode overrides
+   ========================================= */
+.dark {
+  --color-bg-from: #1a365d;
+  --color-bg-mid: #2c5282;
+  --color-bg-to: #2d004d;
+
+  --color-text: #dbeafe;
+  --color-text-muted: #bfdbfe;
+
+  --color-glass-bg: rgba(255, 255, 255, 0.15);
+  --color-glass-border: rgba(255, 255, 255, 0.25);
+  --color-glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+
+  --color-card-text: #d0f1ff;
+  --color-card-tshadow: 0 1px 8px rgba(255, 255, 255, 0.15);
+
+  --color-header-bg: rgba(255, 255, 255, 0.15);
+
+  --color-btn-text: #bfdbfe;
+  --color-btn-hover: #ffffff;
+
+  --color-tag-bg: rgba(20, 30, 48, 0.6);
+  --color-tag-text: #ffffff;
+  --color-tag-border: rgba(255, 255, 255, 0.18);
+
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
+
+  --color-scrollbar-track: rgba(255, 255, 255, 0.1);
+  --color-scrollbar-thumb: rgba(255, 255, 255, 0.2);
+  --color-scrollbar-hover: rgba(255, 255, 255, 0.3);
+}
+
+/* =========================================
+   Base styles
+   ========================================= */
 body {
   background: linear-gradient(
     135deg,
-    var(--primary-blue),
-    var(--secondary-blue) 50%,
-    var(--deep-purple) 100%
+    var(--color-bg-from),
+    var(--color-bg-mid) 50%,
+    var(--color-bg-to) 100%
   );
   min-height: 100vh;
-  color: #fff;
+  color: var(--color-text);
+  transition: color 0.3s ease;
 }
 
-/* Utility for glass morphism effect */
+hr {
+  border-color: var(--color-border-subtle);
+}
+
+/* =========================================
+   Glass morphism utilities
+   ========================================= */
 @utility glass {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--color-glass-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  border: 1.5px solid var(--color-glass-border);
+  box-shadow: var(--color-glass-shadow);
 }
 
 @utility w-fit-content {
   width: fit-content;
 }
 
+/* Glass header — scroll-triggered opacity fade */
 header::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: var(--color-header-bg);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    background 0.4s ease;
 }
 
 header.glass-header::before {
@@ -56,33 +171,71 @@ header.glass-header::before {
 
 .glass-card {
   @apply glass rounded-xl p-6 transition-all duration-300 hover:shadow-lg;
-  color: #d0f1ff;
-  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.15);
+  color: var(--color-card-text);
+  text-shadow: var(--color-card-tshadow);
 }
 
 .glass-button {
-  @apply glass px-6 py-2 rounded-lg text-blue-100 hover:text-white transition-all duration-300 hover:shadow-lg;
+  @apply glass px-6 py-2 rounded-lg transition-all duration-300 hover:shadow-lg;
+  color: var(--color-btn-text);
+}
+.glass-button:hover {
+  color: var(--color-btn-hover);
 }
 
-/* Custom scrollbar */
+/* =========================================
+   Navigation & footer semantic colour class
+   ========================================= */
+.nav-link {
+  color: var(--color-text);
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+.nav-link:hover {
+  opacity: 0.7;
+}
+
+/* =========================================
+   Tags / pills
+   ========================================= */
+.glass-tag {
+  background: var(--color-tag-bg);
+  color: var(--color-tag-text);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--color-tag-border);
+  border-radius: 9999px;
+  padding: 0.25rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: inline-block;
+  box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.1);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+/* =========================================
+   Custom scrollbar
+   ========================================= */
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-scrollbar-track);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--color-scrollbar-thumb);
   border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--color-scrollbar-hover);
 }
 
-/* Animations */
+/* =========================================
+   Animations
+   ========================================= */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -98,36 +251,21 @@ header.glass-header::before {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-.glass-tag {
-  background: rgba(20, 30, 48, 0.6); /* dark glass */
-  color: #fff;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 9999px; /* full */
-  padding: 0.25rem 1rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  display: inline-block;
-  box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.1);
-}
-
-/* Typography plugin customizations for Tailwind v4 */
+/* =========================================
+   Typography plugin customisations
+   ========================================= */
 .prose {
   max-width: 65ch;
   color: inherit;
 }
-
 .prose a {
   color: inherit;
   text-decoration: none;
   font-weight: 500;
 }
-
 .prose strong {
   color: inherit;
 }
-
 .prose code {
   color: inherit;
 }

@@ -20,15 +20,28 @@ const {
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <!-- Anti-FOUC: apply saved / OS theme before first paint -->
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        if (stored === "dark" || (!stored && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
   </head>
   <body>
     <header id="site-header" class="fixed w-full z-50">
       <nav class="container mx-auto px-4 py-4 m-4">
         <div class="flex justify-between items-center">
+          <!-- Logo -->
           <a
             href="/"
             aria-label="Dzaki Buchori Logo"
-            class="flex items-center text-blue-100 hover:text-white transition-colors"
+            class="flex items-center nav-link"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -43,101 +56,131 @@ const {
               ></path>
             </svg>
           </a>
-          <div class="hidden md:flex space-x-6">
-            <a href="/" class="text-blue-100 hover:text-white transition-colors"
-              >Home</a
+
+          <!-- Right-side controls: nav + theme toggle + hamburger -->
+          <div class="flex items-center gap-3">
+            <!-- Desktop nav links -->
+            <div class="hidden md:flex items-center space-x-6">
+              <a href="/" class="nav-link">Home</a>
+              <!-- TODO: will reveal once about me content is ready
+              <a href="/about" class="nav-link">About Me</a> -->
+              <!-- TODO: add view online functionality
+              <a href="/resume" class="nav-link">Resume</a> -->
+              <a href="/projects" class="nav-link">Projects</a>
+              <!-- TODO: write minimum 5 contents for blog
+              <a href="/blog" class="nav-link">Blog</a> -->
+            </div>
+
+            <!-- Theme toggle button (always visible) -->
+            <button
+              id="theme-toggle"
+              aria-label="Toggle light/dark mode"
+              class="cursor-pointer nav-link p-2 rounded-lg transition-all"
             >
-            <!-- TODO: will reveal once about me content is ready 
-            <a
-              href="/about"
-              class="text-blue-100 hover:text-white transition-colors"
-              >About Me</a
-            > -->
-            <!-- TODO: add view online functionality 
-            <a 
-              href="/resume"
-              class="text-blue-100 hover:text-white transition-colors">Resume</a
-            > -->
-            <a
-              href="/projects"
-              class="text-blue-100 hover:text-white transition-colors"
-              >Projects</a
+              <!-- Moon: shown in light mode — click to switch to dark -->
+              <svg
+                id="icon-moon"
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+                ></path>
+              </svg>
+              <!-- Sun: shown in dark mode — click to switch to light -->
+              <svg
+                id="icon-sun"
+                class="hidden w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0z"
+                ></path>
+              </svg>
+            </button>
+
+            <!-- Mobile hamburger (hidden on desktop) -->
+            <button
+              class="md:hidden nav-link"
+              id="mobile-menu-button"
+              aria-label="Toggle menu"
+              aria-expanded="false"
             >
-            <!-- TODO: write minimum 5 contents for blog 
-            <a
-              href="/blog"
-              class="text-blue-100 hover:text-white transition-colors">Blog</a
-            > -->
+              <!-- Hamburger icon -->
+              <svg
+                id="icon-hamburger"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+              <!-- Close (X) icon -->
+              <svg
+                id="icon-close"
+                class="hidden w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
           </div>
-          <button
-            class="md:hidden text-blue-100"
-            id="mobile-menu-button"
-            aria-label="Toggle menu"
-            aria-expanded="false"
-          >
-            <!-- Hamburger icon -->
-            <svg
-              id="icon-hamburger"
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-            <!-- Close (X) icon -->
-            <svg
-              id="icon-close"
-              class="hidden w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
         </div>
       </nav>
 
       <!-- Mobile menu panel -->
-      <div id="mobile-menu" class="hidden md:hidden border-t border-white/10">
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden border-t border-[color:var(--color-border-subtle)]"
+      >
         <div class="container mx-auto px-4 py-2 flex flex-col">
           <a
             href="/"
-            class="text-blue-100 hover:text-white transition-colors py-3 border-b border-white/10"
+            class="nav-link py-3 border-b border-[color:var(--color-border-subtle)]"
             >Home</a
           >
           <!-- TODO: will reveal once about me content is ready
-            <a
+          <a
             href="/about"
-            class="text-blue-100 hover:text-white transition-colors py-3 border-b border-white/10"
+            class="nav-link py-3 border-b border-[color:var(--color-border-subtle)]"
             >About Me</a
           > -->
           <!-- TODO: add view online functionality
           <a
             href="/resume"
-            class="text-blue-100 hover:text-white transition-colors py-3 border-b border-white/10"
+            class="nav-link py-3 border-b border-[color:var(--color-border-subtle)]"
             >Resume</a
           > -->
           <a
             href="/projects"
-            class="text-blue-100 hover:text-white transition-colors py-3 border-b border-white/10"
+            class="nav-link py-3 border-b border-[color:var(--color-border-subtle)]"
             >Projects</a
           >
-          <!-- TODO: write minimum 5 contents for blog 
-          <a
-            href="/blog"
-            class="text-blue-100 hover:text-white transition-colors py-3"
-            >Blog</a
-          > -->
+          <!-- TODO: write minimum 5 contents for blog
+          <a href="/blog" class="nav-link py-3">Blog</a> -->
         </div>
       </div>
     </header>
@@ -151,13 +194,14 @@ const {
     <footer class="mb-4">
       <div class="container mx-auto px-4 py-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
-          <div class="text-blue-100">
+          <div class="nav-link opacity-70 text-sm">
             © {new Date().getFullYear()} Dzaki Buchori. All rights reserved.
           </div>
           <div class="flex space-x-4 mt-4 md:mt-0">
             <a
               href="https://github.com/dzakibuchori"
-              class="text-blue-100 hover:text-white transition-colors"
+              class="nav-link"
+              aria-label="GitHub"
             >
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
                 ><path
@@ -167,7 +211,8 @@ const {
             </a>
             <a
               href="https://linkedin.com/in/dzakibuchori"
-              class="text-blue-100 hover:text-white transition-colors"
+              class="nav-link"
+              aria-label="LinkedIn"
             >
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
                 ><path
@@ -177,8 +222,8 @@ const {
             </a>
             <a
               href="mailto:dzakibuchori.dev@gmail.com"
-              class="text-blue-100 hover:text-white transition-colors"
-              title="Email"
+              class="nav-link"
+              aria-label="Email"
             >
               <svg
                 class="w-6 h-6"
@@ -201,8 +246,8 @@ const {
             </a>
             <a
               href="https://dzakibuchori.github.io"
-              class="text-blue-100 hover:text-white transition-colors"
-              title="Website"
+              class="nav-link"
+              aria-label="Website"
             >
               <svg
                 class="w-6 h-6"
@@ -229,6 +274,7 @@ const {
     </footer>
 
     <script>
+      // ── Scroll: glass header effect ────────────────────────────────────────
       const header = document.getElementById("site-header");
       const menuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");
@@ -245,6 +291,7 @@ const {
         { passive: true },
       );
 
+      // ── Mobile menu ────────────────────────────────────────────────────────
       function openMenu() {
         mobileMenu?.classList.remove("hidden");
         iconHamburger?.classList.add("hidden");
@@ -270,6 +317,25 @@ const {
 
       mobileMenu?.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", closeMenu);
+      });
+
+      // ── Theme toggle ───────────────────────────────────────────────────────
+      const themeToggle = document.getElementById("theme-toggle");
+      const iconMoon = document.getElementById("icon-moon");
+      const iconSun = document.getElementById("icon-sun");
+
+      function applyThemeIcons(isDark: boolean) {
+        iconMoon?.classList.toggle("hidden", isDark);
+        iconSun?.classList.toggle("hidden", !isDark);
+      }
+
+      // Sync icons with the theme the anti-FOUC script already applied
+      applyThemeIcons(document.documentElement.classList.contains("dark"));
+
+      themeToggle?.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        applyThemeIcons(isDark);
       });
     </script>
   </body>
