@@ -1,25 +1,58 @@
 ---
 import "../styles/global.css";
+
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
+  ogType?: string;
 }
 
 const {
   title,
   description = "Personal website of Dzaki Buchori, a Software Engineer",
+  ogImage = "/profile.jpg",
+  ogType = "website",
 } = Astro.props;
+
+const siteURL = "https://dzakibuchori.github.io";
+const canonicalURL = Astro.url.href;
+const ogImageAbsolute = new URL(ogImage, siteURL).href;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
+
+    <!-- Primary meta -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:site_name" content="Dzaki Buchori" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
+    <meta name="twitter:image:alt" content={title} />
+
+    <!-- Per-page extras (e.g. JSON-LD, hreflang, etc.) -->
+    <slot name="head" />
+
     <!-- Anti-FOUC: apply saved / OS theme before first paint -->
     <script is:inline>
       (function () {

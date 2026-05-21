@@ -3,9 +3,31 @@ import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { projects } from "../data/projects";
 const years = new Date().getFullYear() - 2018;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Dzaki Buchori",
+  url: "https://dzakibuchori.github.io",
+  image: "https://dzakibuchori.github.io/profile.jpg",
+  jobTitle: "Full Stack Software Developer",
+  worksFor: {
+    "@type": "Organization",
+    name: "Unit4",
+  },
+  sameAs: [
+    "https://github.com/dzakibuchori",
+    "https://linkedin.com/in/dzakibuchori",
+  ],
+  knowsAbout: ["Java", "TypeScript", "PHP", "Angular", "Spring Boot", "Next.js", "Go"],
+};
 ---
 
-<Layout title="Welcome to Dzaki's Personal Website">
+<Layout
+  title="Dzaki Buchori — Full Stack Software Developer"
+  description={`Full Stack Software Developer with ${years}+ years of experience in Java, TypeScript, and PHP. Currently at Unit4 building enterprise-grade financial planning applications used by 400+ clients worldwide.`}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <section
     id="say-hi"
     class="flex flex-col sm:flex-row items-center gap-8 my-14 mx-8"
