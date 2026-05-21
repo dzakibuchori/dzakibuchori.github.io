@@ -45,7 +45,8 @@ const project = {
                 class="underline">much more</a
               >.
             </p>
-            <h2 class="text-2xl font-bold mb-4">My key contributions:</h2>
+            <hr />
+            <h2 class="text-2xl font-bold my-4">My key contributions:</h2>
             <p class="mb-4">
               <ul class="list-disc ml-4 mb-4">
                 <li>
@@ -87,15 +88,31 @@ const project = {
                   workflows.
                 </li>
               </ul>
-
-              <div class="flex flex-wrap gap-2">
-                {
-                  project.tags.map((tag) => (
-                    <span class="glass-tag">{tag}</span>
-                  ))
-                }
-              </div>
             </p>
+            <hr />
+            <h2 class="text-2xl font-bold my-4">Technology Stack:</h2>
+            <p class="mb-4">
+              <ul class="list-disc ml-4 mb-4">
+                <li>
+                  <strong>Programming Languages &amp; Frameworks:</strong> Java (Spring
+                  Boot), JavaScript/TypeScript (Angular)
+                </li>
+                <li>
+                  <strong>Database:</strong> MySQL
+                </li>
+                <li>
+                  <strong>Unit Test:</strong> Gherkin (Cucumber), JUnit, Mockito
+                </li>
+                <li>
+                  <strong>Tools &amp; Platforms:</strong> Git, Azure App Services,
+                  Azure Key Vault, Azure Service Bus, Application Insights, CI/CD
+                  Pipelines, Redis Cache
+                </li>
+              </ul>
+            </p>
+            <div class="flex flex-wrap gap-2 mt-10">
+              {project.tags.map((tag) => <span class="glass-tag">{tag}</span>)}
+            </div>
           </div>
         </div>
       </article>
