@@ -1,0 +1,28 @@
+---
+import SectionBlock from "./SectionBlock.astro";
+
+type Props = {
+  years: number;
+};
+
+const { years } = Astro.props;
+---
+
+<SectionBlock title="About Me" id="about-me">
+  <div class="text-lg text-blue-900 dark:text-blue-200">
+    <p class="mb-2">
+      Over the past <strong>{years} years</strong>, I've grown my career as a{" "}
+      <strong>Full Stack Software Developer</strong>, working on complex,
+      enterprise-scale web applications and leading technical teams along the
+      way.
+    </p>
+    <p class="mb-2">
+      I mainly worked with <strong>Java, Typescript, and PHP</strong>, building
+      products across industries such as finance, telecommunications, government,
+      education and e-commerce. My focus is on creating reliable, scalable
+      solutions with AI as a natural part of my day-to-day work.
+    </p>
+    <!-- TODO: will reveal once about me content is ready 
+    <a href="/about" class="underline">More about me...</a> -->
+  </div>
+</SectionBlock>

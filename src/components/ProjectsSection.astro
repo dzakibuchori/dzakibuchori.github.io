@@ -1,0 +1,26 @@
+---
+import SectionBlock from "./SectionBlock.astro";
+import ProjectCard from "./ProjectCard.astro";
+import type { Project } from "../data/projects";
+
+type Props = {
+  projects: Project[];
+};
+
+const { projects } = Astro.props;
+---
+
+<SectionBlock title="Projects" id="projects">
+  <div class="text-lg text-blue-900 dark:text-blue-200">
+    <p class="mb-2">
+      My journey has taken me through a variety of projects, from personal
+      experiments to full-scale professional work. I'm always curious, always
+      looking for the next challenge that helps me grow. Here's a snapshot of
+      some of my most recent projects:
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-4">
+      {projects.map((project) => <ProjectCard {...project} />)}
+    </div>
+    <a href="/projects" class="underline">View all projects...</a>
+  </div>
+</SectionBlock>

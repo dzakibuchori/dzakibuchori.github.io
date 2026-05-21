@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SectionBlock from "../components/SectionBlock.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { projects } from "../data/projects";
 ---
@@ -9,35 +10,24 @@ import { projects } from "../data/projects";
   description="Projects by Dzaki Buchori — Full Stack Developer. From enterprise finance applications at Unit4 to personal experiments in Next.js, Go, and LiveKit. Built with Java, TypeScript, Angular, and Spring Boot."
 >
   <div class="animate-fade-in">
-    <section class="container py-10">
-      <div class="glass-tab">
-        <h1
-          class="text-2xl font-semibold mb-2 text-blue-950 dark:text-blue-100"
-        >
-          Projects
-        </h1>
-      </div>
-      <hr />
+    <SectionBlock title="Projects" headingLevel="h1" class="py-10">
+      <p class="text-lg text-blue-900 dark:text-blue-200 mb-6">
+        From government platforms to enterprise finance, these projects
+        reflect the range of work I've built across my career as a Full Stack
+        Developer — writing production code in <strong
+          >Java, TypeScript, and PHP</strong
+        >, and shipping across industries from telecommunications and
+        education to e-commerce and financial services. Some are personal
+        experiments where I reached for newer tools like <strong
+          >Next.js, Go, and LiveKit</strong
+        >; others are professional builds that demanded the reliability of <strong
+          >Angular, Java EE, and Spring Boot</strong
+        >.
+      </p>
 
-      <div class="flex-1 mt-4">
-        <p class="text-lg text-blue-900 dark:text-blue-200 mb-6">
-          From government platforms to enterprise finance, these projects
-          reflect the range of work I've built across my career as a Full Stack
-          Developer — writing production code in <strong
-            >Java, TypeScript, and PHP</strong
-          >, and shipping across industries from telecommunications and
-          education to e-commerce and financial services. Some are personal
-          experiments where I reached for newer tools like <strong
-            >Next.js, Go, and LiveKit</strong
-          >; others are professional builds that demanded the reliability of <strong
-            >Angular, Java EE, and Spring Boot</strong
-          >.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => <ProjectCard {...project} />)}
-        </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => <ProjectCard {...project} />)}
       </div>
-    </section>
+    </SectionBlock>
   </div>
 </Layout>

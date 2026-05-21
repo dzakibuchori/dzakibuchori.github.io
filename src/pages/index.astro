@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
+import AboutSection from "../components/AboutSection.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
 import { projects } from "../data/projects";
 const years = new Date().getFullYear() - 2018;
 
@@ -60,58 +61,6 @@ const jsonLd = {
     </div>
   </section>
 
-  <section id="about-me" class="container mb-8">
-    <div class="glass-tab">
-      <h2
-        class="text-2xl font-semibold mb-2 text-blue-950 dark:text-blue-100 group-hover:text-white transition-colors"
-      >
-        About Me
-      </h2>
-    </div>
-    <hr />
-    <!-- Text Content -->
-    <div class="flex-1 mt-4">
-      <div class="text-lg text-blue-900 dark:text-blue-200">
-        <p class="mb-2">
-          Over the past <strong>{years} years</strong>, I've grown my career as
-          a <strong>Full Stack Software Developer</strong>, working on complex,
-          enterprise-scale web applications and leading technical teams along
-          the way.
-        </p>
-        <p class="mb-2">
-          I mainly worked with <strong>Java, Typescript, and PHP</strong>,
-          building products across industries such as finance,
-          telecommunications, government, education and e-commerce. My focus is
-          on creating reliable, scalable solutions with AI as a natural part of
-          my day-to-day work.
-        </p>
-        <!-- TODO: will reveal once about me content is ready 
-        <a href="/about" class="underline">More about me...</a> -->
-      </div>
-    </div>
-  </section>
-  <section id="projects" class="container mb-8">
-    <div class="glass-tab">
-      <h2
-        class="text-2xl font-semibold mb-2 text-blue-950 dark:text-blue-100 group-hover:text-white transition-colors"
-      >
-        Projects
-      </h2>
-    </div>
-    <hr />
-    <div class="flex-1 mt-4">
-      <div class="text-lg text-blue-900 dark:text-blue-200">
-        <p class="mb-2">
-          My journey has taken me through a variety of projects, from personal
-          experiments to full-scale professional work. I’m always curious,
-          always looking for the next challenge that helps me grow. Here’s a
-          snapshot of some of my most recent projects:
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-4">
-          {projects.map((project) => <ProjectCard {...project} />)}
-        </div>
-        <a href="/projects" class="underline">View all projects...</a>
-      </div>
-    </div>
-  </section>
+  <AboutSection years={years} />
+  <ProjectsSection projects={projects} />
 </Layout>
