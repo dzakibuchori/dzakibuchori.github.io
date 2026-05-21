@@ -31,25 +31,74 @@ const project = {
           >
             {project.category}
           </span>
+          <div class="text-lg text-blue-900 dark:text-blue-200 mb-6">
+            <p class="mb-4">
+              This was the very first project I worked on after joining Unit4.
+              It's enterprise-grade compensation planning application designed
+              to help companies to plan, allocate, and communicate compensation
+              decisions all within an easy to implement and intuitive
+              application. The application supports everything from configuring
+              multiple compensation plans, setting budgets and guidelines to
+              automating recommendations and approvals, and <a
+                href="https://www.unit4.com/sites/default/files/library-files/2022-03/Unit4-Human-Capital-Management-Compensation-Planning-FY220304INT.pdf"
+                target="_blank"
+                class="underline">much more</a
+              >.
+            </p>
+            <h2 class="text-2xl font-bold mb-4">My key contributions:</h2>
+            <p class="mb-4">
+              <ul class="list-disc ml-4 mb-4">
+                <li>
+                  <strong
+                    >Strengthened platform security, reliability, and compliance</strong
+                  > by implementing HTTP Strict Transport Security (HSTS), securing
+                  Application Insights configuration, enhancing Azure Service Bus
+                  retry and reconnection logic, and conducting GDPR technical analysis
+                  to identify hidden PII risks and implementation blockers.
+                </li>
+                <li>
+                  <strong
+                    >Improved observability and operational monitoring</strong
+                  > by enhancing Application Insights logging across REST APIs, authentication
+                  flows (login/logout), queue processing, and background jobs, significantly
+                  improving issue traceability and production diagnostics.
+                </li>
+                <li>
+                  <strong
+                    >Stabilized and enhanced core analytics and planning modules</strong
+                  > by fixing critical data accuracy, calculation, and UI issues across
+                  modules: Pay Equity, Employee Analytics, Budget Rollup, Field Names
+                  &amp; Locations, User Management and Role, ensuring reliable insights
+                  and consistent user experience.
+                </li>
+                <li>
+                  <strong
+                    >Modernized backend architecture and improved code quality</strong
+                  > through module refactoring (Department, Range Identifier, Data
+                  Loader templates), increased unit test coverage (Dashboard and Report
+                  utilities), and more resilient caching and tenant refresh mechanisms.
+                </li>
+                <li>
+                  <strong
+                    >Streamlined cloud infrastructure and CI/CD processes</strong
+                  > by developing and maintaining Azure App Services deployment pipelines,
+                  provisioning multiple QA environments, automating tenant secret
+                  management with Azure Key Vault, and enhancing multi-tenant refresh
+                  workflows.
+                </li>
+              </ul>
 
-          <p class="text-lg text-blue-900 dark:text-blue-200 mb-6">
-            This was the very first project I worked on after joining Unit4.
-            It's enterprise-grade compensation planning application designed to
-            help companies to plan, allocate, and communicate compensation
-            decisions all within an easy to implement and intuitive application.
-            The application supports everything from configuring multiple
-            compensation plans, setting budgets and guidelines to automating
-            recommendations and approvals, and <a
-              href="https://www.unit4.com/sites/default/files/library-files/2022-03/Unit4-Human-Capital-Management-Compensation-Planning-FY220304INT.pdf"
-              target="_blank"
-              class="underline">much more</a
-            >.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            {project.tags.map((tag) => <span class="glass-tag">{tag}</span>)}
+              <div class="flex flex-wrap gap-2">
+                {
+                  project.tags.map((tag) => (
+                    <span class="glass-tag">{tag}</span>
+                  ))
+                }
+              </div>
+            </p>
           </div>
         </div>
       </article>
     </section>
-  </div>
-</Layout>
+  </div></Layout
+>
