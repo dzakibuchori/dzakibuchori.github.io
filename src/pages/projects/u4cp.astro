@@ -2,8 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 
 const project = {
-  title: "Unit4 CP",
-  description: "Enterprise-grade compensation planning application",
+  title: "Unit4 CP (Compensation Planning)",
   image: "/projects/u4cp.webp",
   tags: ["Angular", "Spring Boot"],
   category: "Professional",
@@ -32,8 +31,19 @@ const project = {
           >
             {project.category}
           </span>
+
           <p class="text-lg text-blue-900 dark:text-blue-200 mb-6">
-            {project.description}
+            This was the very first project I worked on after joining Unit4.
+            It's enterprise-grade compensation planning application designed to
+            help companies to plan, allocate, and communicate compensation
+            decisions all within an easy to implement and intuitive application.
+            The application supports everything from configuring multiple
+            compensation plans, setting budgets and guidelines to automating
+            recommendations and approvals, and <a
+              href="https://www.unit4.com/sites/default/files/library-files/2022-03/Unit4-Human-Capital-Management-Compensation-Planning-FY220304INT.pdf"
+              target="_blank"
+              class="underline">much more</a
+            >.
           </p>
           <div class="flex flex-wrap gap-2">
             {project.tags.map((tag) => <span class="glass-tag">{tag}</span>)}
